@@ -28,7 +28,7 @@ int ft_strlen(char *str)
 	return (i);
 }
 
-char *ft_putstr(char *str)
+void ft_putstr(char *str)
 {
 	write(1, str, ft_strlen(str));
 }
@@ -115,7 +115,7 @@ int get_figure_to_planshet(FILE *file, t_border *border, char *planshet)
 	return (0);
 }
 
-print_planshet_to_terminal(t_border *border, char *planshet)
+void print_planshet_to_terminal(t_border *border, char *planshet)
 {
 	int i = 0;
 	while (i < border->width * border->height)
