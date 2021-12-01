@@ -77,12 +77,15 @@ void draw_circle_to_planshet(t_circle *circle, t_border *border, char *planshet)
 {
 	int x;
 	int y = 0;
+	int s;
 	while (y < border->height)
 	{
 		x = 0;
 		while (x < border->width)
 		{
-			if (in_circle(x, y, circle) != 0)
+			s = in_circle(x, y, circle);
+			if (s == 1 && circle->type == 'c'
+				|| s != 0 && circle->type == 'C' )
 				planshet[y * border->width + x] = circle->color;
 			x++;
 		}
@@ -92,7 +95,7 @@ void draw_circle_to_planshet(t_circle *circle, t_border *border, char *planshet)
 
 int	is_correct_figure(t_circle *circle)
 {
-	if (!(circle->type == 'C' && circle->radius > 0))
+	if (!((circle->type == 'C' || circle->type == 'c') && circle->radius > 0))
 		return (0);
 	return (1);
 }
